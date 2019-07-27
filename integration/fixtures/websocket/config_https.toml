@@ -1,0 +1,29 @@
+defaultEntryPoints = ["wss"]
+
+logLevel = "DEBUG"
+insecureSkipVerify=true
+
+[entryPoints]
+  [entryPoints.wss]
+  address = ":8000"
+  [entryPoints.wss.tls]
+  [[entryPoints.wss.tls.certificates]]
+    certFile = "resources/tls/local.cert"
+    keyFile = "resources/tls/local.key"
+
+[api]
+
+[file]
+
+[backends]
+  [backends.backend1]
+    [backends.backend1.servers.server1]
+    url = "{{ .WebsocketServer }}"
+    weight = 1
+
+[frontends]
+  [frontends.frontend1]
+  backend = "backend1"
+  passHostHeader = true
+    [frontends.frontend1.routes.test_1]
+    rule = "Path:/echo,/ws"

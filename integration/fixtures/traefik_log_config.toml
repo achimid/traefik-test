@@ -1,0 +1,25 @@
+################################################################
+# Global configuration
+################################################################
+[traefikLog]
+  filePath = "traefik.log"
+
+[accessLog]
+  filePath = "access.log"
+
+logLevel = "DEBUG"
+defaultEntryPoints = ["http"]
+
+checkNewVersion = false
+
+[entryPoints]
+  [entryPoints.http]
+  address = ":8000"
+
+[api]
+  dashboard = false
+
+[docker]
+  exposedByDefault = false
+  domain = "docker.local"
+  watch = true

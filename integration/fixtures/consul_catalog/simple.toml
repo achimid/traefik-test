@@ -1,0 +1,12 @@
+defaultEntryPoints = ["http"]
+logLevel = "DEBUG"
+
+[api]
+
+[entryPoints]
+  [entryPoints.http]
+  address = ":8000"
+
+[consulCatalog]
+domain = "consul.localhost"
+frontEndRule = "Host:{{.ServiceName}}.{{.Domain}}"

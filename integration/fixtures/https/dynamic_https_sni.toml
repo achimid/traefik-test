@@ -1,0 +1,18 @@
+logLevel = "DEBUG"
+
+defaultEntryPoints = ["https"]
+
+[entryPoints]
+  [entryPoints.https]
+  address = ":4443"
+  [entryPoints.https.tls]
+  [entryPoints.https02]
+  address = ":8443"
+  [entryPoints.https02.tls]
+
+[api]
+
+[file]
+
+fileName = "{{.DynamicConfFileName}}"
+watch = true

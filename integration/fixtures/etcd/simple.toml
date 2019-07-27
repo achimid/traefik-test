@@ -1,0 +1,19 @@
+defaultEntryPoints = ["http"]
+
+logLevel = "DEBUG"
+
+[entryPoints]
+  [entryPoints.http]
+  address = ":8000"
+  [entryPoints.api]
+  address = ":8081"
+
+
+[etcd]
+  endpoint = "{{.EtcdHost}}:2379"
+  prefix = "/traefik"
+  watch = true
+  useAPIV3 = {{.UseAPIV3}}
+
+[api]
+  entryPoint = "api"
